@@ -38,9 +38,9 @@
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     coreutils dcfldd wget curl gnupg git htop emacs kate lsof
-    openssh xz killall mkpasswd nox xclip ark file dnsutils
-    openvpn nix-prefetch-git okular kgpg nix-index terminator
-    tmux tree arandr scrot gitAndTools.gitflow docker-compose openjdk
+    openssh xz killall mkpasswd nox xclip ark file dnsutils protobuf
+    openvpn nix-prefetch-git okular kgpg nix-index terminator openjdk 
+    home-manager tmux tree arandr scrot gitAndTools.gitflow docker-compose
     scala sbt ammonite jetbrains.idea-community bloop meld slack google-chrome
   ];
 
@@ -80,11 +80,14 @@
   services.xserver.desktopManager.plasma5.enable = true;
 
   # zsh
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    syntaxHighlighting.enable = true;
+  };
   programs.zsh.ohMyZsh = {
     enable = true;
-    plugins = [ "git" "sudo" "git-flow" "sdk" "tmux"];
-    theme = "robbyrussell";
+    plugins = [ "git" "sudo" "git-flow" "tmux" "git-prompt" ];
+    theme = "bira";
   };
 
   # docker
