@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ vscode zsh-completions thefuck];
+  home.packages = with pkgs; [ zsh-completions thefuck autojump zoom-us ];
 
   programs.home-manager.enable = true;
 
