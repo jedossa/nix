@@ -17,6 +17,7 @@
   networking.hostName = "yagamix"; # Define your hostname.
   networking.networkmanager.enable = true;
   networking.networkmanager.packages = [ pkgs.networkmanagerapplet ];
+  networking.nameservers = [ "1.1.1.1" "1.0.0.1" "8.8.8.8"];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -37,11 +38,11 @@
   # $ nix search wget
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    coreutils dcfldd wget curl gnupg git htop emacs kate lsof
-    openssh xz killall mkpasswd nox xclip ark file dnsutils protobuf
-    openvpn nix-prefetch-git okular kgpg nix-index terminator openjdk 
-    home-manager tmux tree arandr scrot gitAndTools.gitflow docker-compose
-    scala sbt ammonite jetbrains.idea-community bloop meld slack google-chrome
+    coreutils dcfldd wget curl gnupg git htop emacs kate lsof vscode
+    openssh xz killall mkpasswd nox xclip ark file dnsutils protobuf 
+    openvpn nix-prefetch-git okular kgpg nix-index terminator openjdk zip
+    home-manager tmux tree arandr scrot gitAndTools.gitflow docker-compose unzip 
+    scala dotty sbt ammonite jetbrains.idea-community bloop meld slack google-chrome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -66,6 +67,9 @@
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
