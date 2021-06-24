@@ -8,9 +8,9 @@
   programs.git = {
     enable = true;
     userName = "jedossa";
-    userEmail = "jefersonossa@s4n.co";
+    userEmail = "jedossa@gmail.com";
     signing = {
-      key = "jefersonossa@s4n.co";
+      key = "jedossa@gmail.com";
       signByDefault = true;
     };
     ignores = [ ".directory" ];
