@@ -1,11 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ zsh-completions thefuck autojump zoom-us ];
+  home.packages = with pkgs; [ zsh-completions thefuck autojump sbt ammonite jetbrains.idea-community google-chrome vscode ];
 
   programs.home-manager.enable = true;
 
-  programs.git = {
+  programs.git = { 
     enable = true;
     userName = "jedossa";
     userEmail = "jedossa@gmail.com";
@@ -13,6 +13,12 @@
       key = "jedossa@gmail.com";
       signByDefault = true;
     };
-    ignores = [ ".directory" ];
+    ignores = [ ".directoy" ];
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 1800;
+    enableSshSupport = true;
   };
 }
