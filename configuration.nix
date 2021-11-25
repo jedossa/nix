@@ -19,11 +19,10 @@
 
   networking.hostName = "yagami";
   networking.networkmanager.enable = true;
-  networking.networkmanager.packages = [ pkgs.networkmanagerapplet ];
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" "8.8.8.8" ];
-  
+
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/Madrid";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -64,7 +63,8 @@
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  
+  services.xserver.desktopManager.mate.enable = true;
+
   # docker
   virtualisation.docker.enable = true;
 
@@ -76,11 +76,11 @@
   sound.mediaKeys.enable = true;
   hardware.pulseaudio = {
     enable = true;
-    package = pkgs.pulseaudioFull;    
+    package = pkgs.pulseaudioFull;
   };
   hardware.bluetooth.enable = true;
   hardware.enableAllFirmware = true;
-  hardware.openrazer.enable = true; 
+  hardware.openrazer.enable = true;
 
   # zsh
   programs.zsh = {
@@ -103,7 +103,6 @@
   };
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 60d";
   nix.autoOptimiseStore = true;
@@ -112,11 +111,11 @@
   # $ nix search wget
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    coreutils dcfldd wget curl gnupg git htop lsof vlc bubblewrap
+    coreutils dcfldd wget curl gnupg git htop lsof vlc bubblewrap firefox
     openssh xz killall mkpasswd nox xclip ark file dnsutils protobuf steam-run
     openvpn nix-prefetch-git kgpg nix-index terminator openjdk16 zip unzip
     home-manager tmux tree arandr gitAndTools.gitflow docker docker-compose
-    meld okular spectacle plasma-browser-integration kdeplasma-addons
+    meld okular spectacle plasma-browser-integration kdeplasma-addons atom
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -131,6 +130,7 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  services.chrony.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
